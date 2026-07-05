@@ -1,0 +1,14 @@
+/* 1. @import font wajib di baris paling pertama */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&display=swap');
+
+/* 2. @import tailwindcss di baris kedua */
+@import "tailwindcss";
+
+/* 3. Daftarkan variabel font kustom untuk Tailwind v4 */
+@theme {
+  --font-space: "Space Grotesk", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
