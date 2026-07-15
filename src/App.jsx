@@ -586,11 +586,11 @@ export default function App() {
 
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                Karya Kode
+                Code Project
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                Showcase Proyek
+                Projects
               </h2>
             </div>
           </div>
@@ -684,11 +684,11 @@ export default function App() {
 
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                Validasi Kompetensi
+                Certificates
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                Sertifikat Akademis
+                Certificates 
               </h2>
             </div>
           </div>
