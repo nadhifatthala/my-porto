@@ -260,14 +260,6 @@ const projects = [
 
 const certificates = [
   {
-    title: "Junior Web Developer (VSGA)",
-    issuer: "Kementerian Kominfo RI",
-    date: "DiBimbing - 2026",
-    desc: "Sertifikasi kompetensi resmi Junior Web Developer melalui skema Vocational School Graduate Academy (VSGA).",
-    image: "/certs/cyber.png", 
-    link: "/certs/cyber.png"
-  },
-  {
     title: "Intro Software Engineering",
     issuer: "Dicoding Indonesia",
     date: "RevoU - 2026",
@@ -306,14 +298,6 @@ const certificates = [
     desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
     image: "/certs/image5.png", 
     link: "/certs/image5.png"
-  },
-  {
-    title: "Test of English as a Foreign Language (TOEFL)",
-    issuer: "Interaction Design Foundation",
-    date: "BAPPENAS RI - 2025",
-    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
-    image: "/certs/image6.png", 
-    link: "/certs/image6.png"
   }
 ];
 
