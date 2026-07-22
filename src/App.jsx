@@ -1,22 +1,21 @@
-import { useEffect, useState } from 'react';
+// Impor komponen Navbar baru Anda di bagian atas
+import { useState } from 'react';
 import Navbar from './Navbar';
 
-// Halaman detail proyek
+// Impor ke-7 Halaman Detail Proyek Mandiri Anda dengan Casing yang Presisi
 import ProjectBappenas from './ProjectBappenas';
-import ProjectUtm from './ProjectUTM';
 import ProjectEdu from './ProjectEdu';
 import ProjectDB from './ProjectDB';
-import ProjectFlut from './ProjectFlut';
-import ProjectMT from './ProjectMT';
+import ProjectFlut from './ProjectFlut'; 
+import ProjectMT from './ProjectMT'; 
+import ProjectSW from './ProjectSW'; 
+import ProjectShoes from './ProjectShoes';
 
-
-// ==========================================
-// DATA SKILLS (Diubah Menggunakan Sistem Tag)
-// ==========================================
+// === DATA SUMBER (8 Box Keahlian) ===
 const skills = [
   {
     title: 'Fullstack Dev',
-    tags: ['React.js', 'Vue.js', 'PHP', 'Laravel', 'MySQL','CSS', 'Json','HTML5','API'],
+    tags: ['React.js', 'Vue.js', 'PHP', 'Laravel', 'MySQL','CSS', 'Json','HTML5','API', 'Wordpress'],
     icon: (
       <svg
         className="w-6 h-6 text-[#ca5b00]"
@@ -168,294 +167,271 @@ const skills = [
   },
 ];
 
-// ==========================================
-// DATA EXPERIENCE
-// ==========================================
 const experiences = [
   {
-    role: 'Research Assistant at Universitas Trunojoyo Madura',
-    company: 'Universitas Trunojoyo Madura',
-    period: '2025 - 2026',
-    description:
-      'Conducted research on an intelligent rice leaf disease detection system using the MobileNetV2 deep learning model. Contributed to dataset preparation, model development and evaluation, and implemented the trained model into both web and Android applications to provide a practical solution for early rice disease identification.',
+    role: "Research Assistant at Universitas Trunojoyo Madura",
+    company: "Tech Horizon Studio",
+    period: "2025 - 2026",
+    description: "Conducted research on an intelligent rice leaf disease detection system using the MobileNetV2 deep learning model. Contributed to dataset preparation, model development and evaluation, and implemented the trained model into both web and Android applications to provide a practical solution for early rice disease identification."
   },
   {
-    role: 'Internship at Ministry of National Development Planning / BAPPENAS Republic of Indonesia',
-    company: 'Ministry of National Development Planning / BAPPENAS',
-    period: '2025',
-    description:
-      "Developed an interactive dashboard to visualize stunting and food self-sufficiency information across East Java by integrating geographic and statistical data into an intuitive web-based platform. Additionally, contributed to the development of an AI-powered solution for one of the ministry's internal tools, collaborating with the team to support digital innovation and improve operational efficiency.",
-  },
+    role: "Internship At Ministry of National Development Planning / BAPPENAS Republic of Indonesia",
+    company: "Quantum Pixel Agency",
+    period: "2025",
+    description: "Developed an interactive dashboard to visualize stunting and food self-sufficiency information across East Java by integrating geographic and statistical data into an intuitive web-based platform. Additionally, contributed to the development of an AI-powered solution for one of the ministry's internal tools, collaborating with the team to support digital innovation and improve operational efficiency."
+  }
 ];
 
-// ==========================================
-// DATA PROJECT
-// ==========================================
+// === LIST PROYEK DEPAN PORTFOLIO (Ditambahkan properti "types" untuk sistem filter) ===
 const projects = [
   {
-    id: 'bappenas',
-    title: 'BAPPENAS GIS Analytics Dashboard',
-    category: 'Geographic Info System',
-    description:
-      'Interactive dashboard visualizing stunting rates and food self-sufficiency index across East Java, integrating complex geographic and statistical data.',
-    tech: ['HTML', 'JSON', 'Leaflet.js', 'CSS'],
-    cover: '/projects/bappenas.png',
+    id: "bappenas", 
+    title: "BAPPENAS GIS Analytics Dashboard",
+    category: "Geographic Info System",
+    description: "Interactive dashboard visualizing stunting rates and food self-sufficiency index across East Java, integrating complex geographic and statistical data.",
+    tech: ["React.js", "Vite", "Leaflet.js", "Tailwind CSS"],
+    cover: "/projects/bappenas.png",
+    types: ["Web development"] // Kategori filter
   },
-  ,
   {
-    id: "db", // <-- MENDAFTARKAN PROYEK KE-6 BARU ANDA!
-    title: "Aetherial Dashboard Platform",
-    category: "SaaS & Data Analytics",
-    description: "SaaS dashboard platform designed for real-time telemetry monitoring, database metrics, workspace data analytics, and alert management.",
+    id: "utm",
+    title: "UTM Rice Leaf Identifier Mobile App",
+    category: "Mobile & Deep Learning",
+    description: "Android application designed to detect rice leaf diseases instantly using a MobileNetV2 model trained on crop leaf datasets.",
+    tech: ["Kotlin", "Android SDK", "TensorFlow Lite", "MobileNetV2"],
+    cover: "/projects/appdev.png",
+    types: ["Android Development", "machine learning"] // Masuk ke 2 kategori sekaligus!
+  },
+  {
+    id: "edu", 
+    title: "Pembelajaran Budaya Madura",
+    category: "UI/UX Design",
+    description: "Desain interaktif prototipe aplikasi seluler pembelajaran budaya Madura (EduTech Madura) yang memperkenalkan tarian, musik tradisional, pakaian adat, dan kebudayaan khas pulau Madura secara menarik.",
+    tech: ["Figma", "UI/UX", "Prototyping", "Mobile App"],
+    cover: "/projects/edu1.png",
+    types: ["UI/UX Development"]
+  },
+  {
+    id: "flut", 
+    title: "LinguistHero - English Learning App",
+    category: "Mobile Application",
+    description: "An interactive Android-based English learning application featuring gamified course mastery, quick practice modules, personalized progress metrics, and live announcements.",
+    tech: ["Flutter", "Dart", "Android SDK"],
+    cover: "/projects/flutter2.png",
+    types: ["Android Development"]
+  },
+  {
+    id: "mt", 
+    title: "Madura Tour Mobile App",
+    category: "Tourism & Cross-Platform",
+    description: "A comprehensive mobile tourism application designed to explore local destinations, cultural heritages, and culinary delights across Madura Island.",
+    tech: ["Flutter", "Dart", "Android SDK"],
+    cover: "/projects/mt1.png",
+    types: ["Android Development"]
+  },
+  {
+    id: "db", 
+    title: "E-Commerce Klik Indomaret",
+    category: "Web Application",
+    description: "A web-based e-commerce platform replica of Klik Indomaret featuring secure user authentication, interactive product catalog, shopping cart, and automated purchase receipts.",
     tech: ["PHP", "HTML", "CSS", "MySQL"],
-    cover: "/projects/db.png" 
+    cover: "/projects/db.png",
+    types: ["Web development"]
   },
   {
-    id: 'utm',
-    title: 'UTM Rice Leaf Identifier Mobile App',
-    category: 'Mobile & Deep Learning',
-    description:
-      'Android application designed to detect rice leaf diseases instantly using a MobileNetV2 model trained on crop leaf datasets.',
-    tech: [
-      'Flutter',
-      'TensorFlow Lite',
-      'MobileNetV2',
-    ],
-    cover: '/projects/appdev.png',
+    id: "sw", 
+    title: "SwiftpediaCommerce E-Commerce",
+    category: "Web Application",
+    description: "A full-featured e-commerce platform built with React, Node.js, and MySQL, featuring modern product catalogs, persistent shopping carts, and dynamic transaction flows.",
+    tech: ["React.js", "Node.js", "MySQL", "Tailwind CSS"],
+    cover: "/projects/SW.png",
+    types: ["Web development"]
   },
   {
-    id: 'edu',
-    title: 'Academic EduPortal & Analytics Center',
-    category: 'Education Tech',
-    description:
-      'Interactive design prototype of Madurese cultural learning mobile application (EduTech Madura) which introduces dance, traditional music, traditional clothing, and the unique culture of Madura Island in an interesting way.',
-    tech: ['Mobile App', 'UI/UX', 'Design', 'Figma'],
-    cover: '/projects/edu1.png',
-  },
-  {
-    id: 'flut',
-    title: 'Flutter Mobile Application',
-    category: 'Mobile & Cross-Platform',
-    description:
-      'An interactive Android-based English learning application featuring gamified course mastery, quick practice modules, personalized progress metrics, and live announcements.',
-    tech: ['Flutter', 'Dart', 'Android SDK'],
-    cover: '/projects/flutter2.png',
-  },
-  {
-    id: 'mt',
-    title: 'Madura Tour Mobile App',
-    category: 'Tourism & Cross-Platform',
-    description:
-      'A comprehensive mobile tourism application designed to explore local destinations, cultural heritages, and culinary delights across Madura Island.',
-    tech: ['Flutter', 'Dart', 'Android SDK'],
-    cover: '/projects/mt1.png',
-  },
+    id: "shoes", // ID pemicu kustom Anda
+    title: "Kilau Bersih - App Design",
+    category: "UI/UX Design",
+    description: "An interactive, high-fidelity mobile UI/UX design prototype developed in Figma for a premium shoe care, washing, and restoration booking application. ",
+    tech: ["Figma", "UI/UX", "Prototyping", "Design System"],
+    cover: "/projects/Shoe.png",
+    types: ["UI/UX Development"]// Menggunakan gambar utama Shoe.png langsung sebagai cover depan
+  }        
 ];
 
-// ==========================================
-// DATA CERTIFICATES
-// ==========================================
 const certificates = [
   {
-    title: 'Junior Web Developer (VSGA)',
-    issuer: 'Kementerian Kominfo RI',
-    date: 'DiBimbing - 2026',
-    desc: 'Sertifikasi kompetensi resmi Junior Web Developer melalui skema Vocational School Graduate Academy (VSGA).',
-    image: '/certs/cyber.png',
+    title: "Junior Web Developer (VSGA)",
+    issuer: "Kementerian Kominfo RI",
+    date: "DiBimbing - 2026",
+    desc: "Sertifikasi kompetensi resmi Junior Web Developer melalui skema Vocational School Graduate Academy (VSGA).",
+    image: "/certs/cyber.png", 
+    link: "/certs/cyber.png"
   },
   {
-    title: 'Intro Software Engineering',
-    issuer: 'Dicoding Indonesia',
-    date: 'RevoU - 2026',
-    desc: 'Sertifikasi penyelesaian program pelatihan dasar rekayasa perangkat lunak berskala intensif.',
-    image: '/certs/image10.png',
+    title: "Intro Software Engineering",
+    issuer: "Dicoding Indonesia",
+    date: "RevoU - 2026",
+    desc: "Spesialisasi React tingkat lanjut yang mencakup state management modern, siklus hidup hooks, dan rendering sisi server.",
+    image: "/certs/image10.png", 
+    link: "/certs/image10.png"
   },
   {
-    title: 'Internship at BAPPENAS RI',
-    issuer: 'BAPPENAS RI',
-    date: 'BAPPENAS RI - 2025',
-    desc: 'Sertifikat pengalaman magang di Kementerian Perencanaan Pembangunan Nasional/BAPPENAS.',
-    image: '/certs/image6.png',
+    title: "Internship at BAPPENAS RI",
+    issuer: "BAPPENAS RI",
+    date: "BAPPENAS RI - 2025",
+    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
+    image: "/certs/image6.png", 
+    link: "/certs/image6.png"
   },
   {
-    title: 'Test of English as a Foreign Language (TOEFL)',
-    issuer: 'Universitas Trunojoyo Madura',
-    date: 'Universitas Trunojoyo Madura - 2026',
-    desc: 'Sertifikat kemampuan bahasa Inggris melalui Test of English as a Foreign Language.',
-    image: '/certs/toefl.jpg',
+    title: "Test of English as a Foreign Language (TOEFL)",
+    issuer: "Interaction Design Foundation",
+    date: "Universitas Trundojoyo Madura - 2026",
+    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
+    image: "/certs/toefl.jpg", 
+    link: "/certs/toefl.jpg"
   },
   {
-    title: 'Figma for UI/UX Mobile App',
-    issuer: 'Kelas Work',
-    date: 'Kelas Work - 2026',
-    desc: 'Pelatihan perancangan UI/UX aplikasi mobile menggunakan Figma, wireframe, prototype, dan design system.',
-    image: '/certs/mobile.png',
+    title: "Figma for UI/UX Mbile App",
+    issuer: "Interaction Design Foundation",
+    date: "Kelas Work - 2026",
+    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
+    image: "/certs/mobile.png", 
+    link: "/certs/mobile.png"
   },
   {
-    title: 'Graphic Design and UI/UX',
-    issuer: 'DiBimbing',
-    date: 'DiBimbing - 2026',
-    desc: 'Pelatihan desain grafis dan UI/UX untuk membuat tampilan digital yang menarik dan mudah digunakan.',
-    image: '/certs/image5.png',
+    title: "Graphic Design and UI/UX",
+    issuer: "Interaction Design Foundation",
+    date: "DiBimbing - 2026",
+    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
+    image: "/certs/image5.png", 
+    link: "/certs/image5.png"
   },
   {
-    title: 'Internship Certificate',
-    issuer: 'BAPPENAS RI',
-    date: 'BAPPENAS RI - 2025',
-    desc: 'Sertifikat pengalaman magang dan kontribusi pengembangan dashboard serta fitur digital.',
-    image: '/certs/image6.png',
-  },
+    title: "Test of English as a Foreign Language (TOEFL)",
+    issuer: "Interaction Design Foundation",
+    date: "BAPPENAS RI - 2025",
+    desc: "Penguasaan sistem desain komprehensif, pedoman gaya komponen, struktur tata letak, dan alur kerja desain ke kode.",
+    image: "/certs/image6.png", 
+    link: "/certs/image6.png"
+  }
 ];
 
 export default function App() {
   const [activeProjectId, setActiveProjectId] = useState(null);
+  
+  // State baru untuk melacak gambar aktif sertifikat yang dibuka (Pop-up)
+  const [activeCertImg, setActiveCertImg] = useState(null);
 
-  // Menyimpan data sertifikat yang sedang dibuka
-  const [activeCertificate, setActiveCertificate] = useState(null);
+  // State baru khusus untuk mengelola filter kategori proyek yang dipilih
+  const [projectFilter, setProjectFilter] = useState('All');
 
-  // ==========================================
-  // MODAL CERTIFICATE EFFECT
-  // ==========================================
-  useEffect(() => {
-    if (!activeCertificate) return undefined;
-
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') {
-        setActiveCertificate(null);
-      }
-    };
-
-    const previousOverflow = document.body.style.overflow;
-
-    // Mencegah halaman belakang ikut bergerak
-    document.body.style.overflow = 'hidden';
-
-    window.addEventListener('keydown', handleEscape);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleEscape);
-    };
-  }, [activeCertificate]);
-
-  // ==========================================
-  // PROJECT HANDLER
-  // ==========================================
+  // Menangani pemicu halaman detail proyek
   const handleProjectClick = (id) => {
     setActiveProjectId(id);
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant',
-    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  const handleBackProject = () => {
-    setActiveProjectId(null);
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant',
-    });
-  };
-
-  // ==========================================
-  // DYNAMIC PROJECT ROUTING
-  // ==========================================
+  // === DYNAMIC COMPONENT STATE ROUTING ===
   if (activeProjectId === 'bappenas') {
-    return <ProjectBappenas onBack={handleBackProject} />;
+    return <ProjectBappenas onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
   }
-
   if (activeProjectId === 'utm') {
-    return <ProjectUtm onBack={handleBackProject} />;
+    return <ProjectUtm onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
   }
-
   if (activeProjectId === 'edu') {
-    return <ProjectEdu onBack={handleBackProject} />;
+    return <ProjectEdu onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
   }
+  if (activeProjectId === 'flut') { 
+    return <ProjectFlut onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
+  }
+  if (activeProjectId === 'mt') { 
+    return <ProjectMT onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
+  }
+  if (activeProjectId === 'db') { 
+    return <ProjectDB onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
+  }
+  if (activeProjectId === 'sw') { 
+    return <ProjectSW onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
+  }
+  if (activeProjectId === 'shoes') { // <-- Tambahkan logika rute untuk proyek ProjectShoes baru Anda!
+  return <ProjectShoes onBack={() => { setActiveProjectId(null); window.scrollTo({ top: 0, behavior: 'instant' }); }} />;
+}
 
-  if (activeProjectId === 'db') {
-    return <ProjectDB onBack={handleBackProject} />;
-  }
-
-  if (activeProjectId === 'flut') {
-    return <ProjectFlut onBack={handleBackProject} />;
-  }
-
-  if (activeProjectId === 'mt') {
-    return <ProjectMT onBack={handleBackProject} />;
-  }
+  // === LOGIKA PENYARINGAN PROYEK SECARA DINAMIS ===
+  const filteredProjects = projectFilter === 'All'
+    ? projects
+    : projects.filter(proj => proj.types && proj.types.includes(projectFilter));
 
   return (
+    // Latar belakang menggunakan warna Off-White (#fafafb) dan teks deskripsi abu-abu Slate (#4b5563)
     <div className="min-h-screen bg-[#fafafb] text-[#4b5563] font-sans selection:bg-[#ca5b00] selection:text-white relative overflow-hidden pb-24">
+
       {/* POLA GRID LATAR BELAKANG */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
-      {/* GLOW EFFECT */}
+      {/* GLOW EFFECT PREMIUM (Jingga Hangat di Kanan Atas, Indigo Lembut di Kiri) */}
       <div className="absolute top-[-10%] right-[-10%] w-[55%] h-[55%] rounded-full bg-[#ca5b00]/5 blur-[125px] pointer-events-none" />
-
       <div className="absolute top-[20%] left-[-15%] w-[55%] h-[55%] rounded-full bg-indigo-500/3 blur-[125px] pointer-events-none" />
 
-      {/* NAVBAR */}
+      {/* KOMPONEN NAVBAR */}
       <Navbar />
 
       {/* ==========================================
-          SECTION 1: HERO
+          SECTION 1: HERO (PROFIL - NAMA & FOTO) 
           ========================================== */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center px-6 pt-20 relative"
-      >
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* TEKS PROFIL */}
-          <div className="md:col-span-7 space-y-5 text-center md:text-left relative z-10">
-            <div
-              className="space-y-1"
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-              }}
-            >
+
+          {/* Kiri: Teks Profil */}
+          <div className="md:col-span-7 space-y-1 text-center md:text-left relative z-10">
+            
+
+            <div className="space-y-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] text-[#0e121e]">
-                Rayhanza Nadhif Athala
+                Rayhanza Nadhif Athala <br />
               </h1>
-
               <p className="text-[13px] sm:text-sm lg:text-base uppercase tracking-[0.1em] font-bold text-[#ca5b00]">
-                &bull; Fullstack Developer &bull; UI / UX Design
+                &bull; FullStack Developer &bull; UI /UX Design
               </p>
-
               <p className="text-[13px] sm:text-sm lg:text-base uppercase tracking-[0.1em] font-bold text-[#ca5b00]">
-                &bull; Android Developer &bull; Deep Learning
+                &bull; Android Developer  &bull; Deep Learning
               </p>
             </div>
 
             <p className="text-base sm:text-lg lg:text-xl text-[#4b5563] max-w-2xl leading-relaxed">
-              Fresh Graduate Fullstack Developer with experience in
-              building web and mobile applications. Interested in UI/UX
-              Design, Android application development, and the
-              implementation of Artificial Intelligence and Deep Learning
-              to create modern, responsive, and user-experience-oriented
-              digital solutions.
+              Fresh Graduate Fullstack Developer with experience in building web and mobile applications. Interested in UI/UX Design, Android application development, and the implementation of Artificial Intelligence and Deep Learning to create modern, responsive, and user-experience-oriented digital solutions.
             </p>
           </div>
 
-          {/* FOTO PROFIL */}
+          {/* Kanan: Foto Profil (Dipotong lingkaran sempurna dengan scale-115 untuk menghilangkan border bawaan file) */}
           <div className="md:col-span-5 flex justify-center relative">
             <div className="absolute -top-8 -left-8 w-40 h-40 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:12px_12px] opacity-70 pointer-events-none" />
-
             <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-[radial-gradient(#cbd5e1_2px,transparent_2px)] [background-size:12px_12px] opacity-70 pointer-events-none" />
 
             <div className="relative group w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden">
               <img
                 src="/certs/profile.png"
                 alt="Rayhanza Nadhif Athala"
-                className="w-full h-full object-cover scale-[1.15] opacity-95 group-hover:scale-125 transition-all duration-500"
+                className="
+                  w-full
+                  h-full
+                  object-cover
+                  scale-[1.15]
+                  opacity-95
+                  group-hover:scale-125
+                  transition-all
+                  duration-500
+                "
               />
             </div>
           </div>
+
         </div>
       </section>
 
       {/* ==========================================
-          SECTION 2: SKILLS
+          SECTION 2: SKILLS (TENTANG SKILL) 
           ========================================== */}
       <section
         id="skills"
@@ -469,11 +445,11 @@ export default function App() {
 
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                Tech Skill
+                Tech Skills
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                SKILL
+                SKILLS
               </h2>
             </div>
           </div>
@@ -517,90 +493,108 @@ export default function App() {
       </section>
 
       {/* ==========================================
-          SECTION 3: EXPERIENCE
+          SECTION 3: EXPERIENCE (RIWAYAT PENGALAMAN)
           ========================================== */}
-      <section
-        id="experience"
-        className="py-32 border-t border-zinc-200/60 px-6 bg-zinc-100/30"
-      >
+      <section id="experience" className="py-32 border-t border-zinc-200/60 px-6 bg-zinc-100/30">
         <div className="max-w-6xl mx-auto">
+
           <div className="flex items-center gap-4 mb-16">
-            <span className="text-5xl sm:text-7xl font-extralight text-black">
-              03.
-            </span>
-
+            <span className="text-5xl sm:text-7xl font-extralight text-black">03.</span>
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                History Career
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                EXPERIENCE
-              </h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">History Career</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">EXPERIENCE</h2>
             </div>
           </div>
 
+          {/* DYNAMIC TIMELINE CONTAINER */}
           <div className="relative max-w-2xl mx-auto">
-            {experiences.map((experience, index) => (
-              <div
-                key={`${experience.role}-${index}`}
-                className="relative group pl-10 pb-12"
-              >
-                {index !== experiences.length - 1 && (
+            {experiences.map((exp, idx) => (
+              <div key={idx} className="relative group pl-10 pb-12">
+                
+                {/* 
+                  SEGMEN GARIS VERTIKAL (Menyesuaikan posisi bulatan Anda di top-[108px])
+                  - top-[116px] memulai pas dari tengah bulatan pertama (mencegah kebocoran garis ke atas)
+                  - bottom-[-110px] menarik garis ke bawah melintasi pb-12 untuk menyentuh bulatan kedua pas di posisi top-[108px]
+                */}
+                {idx !== experiences.length - 1 && (
                   <span className="absolute left-[8px] top-[116px] bottom-[-110px] w-0.5 bg-zinc-400" />
                 )}
 
-                <span className="absolute left-0 top-[108px] z-10 w-[18px] h-[18px] rounded-full border-4 border-[#fafaf9] bg-zinc-900 group-hover:bg-[#ca5b00] group-hover:border-orange-100 transition-all duration-300" />
+                {/* Bulatan timeline dipertahankan pas di posisi top-[108px] sesuai keinginan Anda */}
+                <span className="absolute left-0 top-[108px] z-10 w-4.5 h-4.5 rounded-full border-4 border-[#fafaf9] bg-zinc-900 group-hover:bg-[#ca5b00] group-hover:border-orange-100 transition-all duration-300" />
 
                 <div className="space-y-3">
                   <span className="inline-block px-3 py-1 bg-white border border-zinc-200 rounded-full text-xs font-bold text-zinc-500 shadow-sm">
-                    {experience.period}
+                    {exp.period}
                   </span>
-
-                  <h3 className="text-xl font-bold text-zinc-900">
-                    {experience.role}
+                  <h3 className="text-xl font-bold text-[#0e121e] group-hover:text-[#ca5b00] transition-colors duration-300">
+                    {exp.role} 
                   </h3>
-
                   <p className="text-[#4b5563] text-sm leading-relaxed">
-                    {experience.description}
+                    {exp.description}
                   </p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* ==========================================
-          SECTION 4: PROJECTS
+          SECTION 4: PROJECTS (TENTANG PROJECT)
           ========================================== */}
-      <section
-        id="projects"
-        className="py-32 border-t border-zinc-200/60 px-6"
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-5xl sm:text-7xl font-extralight text-zinc-300">
-              04.
-            </span>
+      <section id="projects" className="py-32 border-t border-zinc-200/60 px-6">
+        <div className="max-w-5xl mx-auto"> {/* Dikembalikan ke max-w-5xl untuk keseimbangan visual 3 baris */}
 
+          <div className="flex items-center gap-4 mb-8 sm:mb-16"> {/* mb-16 diubah menjadi mb-8 sm:mb-16 agar filter lebih ke atas di mobile */}
+            <span className="text-5xl sm:text-7xl font-extralight text-black">04.</span>
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                Code Project
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                Projects
-              </h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">Code Projects</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">Projects</h2>
             </div>
           </div>
 
+          {/* TAB FILTER PROYEK (Rata kiri di mobile di bawah tombol "Semua", tengah di desktop) */}
+          <div 
+            className="flex flex-wrap gap-1.5 sm:gap-3 mb-12 px-6 -mx-6 sm:mx-0 justify-start sm:justify-center"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {[
+              { id: 'All', label: 'Semua' },
+              { id: 'Web development', label: 'Web Development' },
+              { id: 'Android Development', label: 'Android Development' },
+              { id: 'machine learning', label: 'Machine Learning' },
+              { id: 'UI/UX Development', label: 'UI/UX Development' }
+            ].reduce((acc, filter, index) => {
+              // Sisipkan pemisah baris khusus di mobile sebelum filter ke-4 (Machine Learning)
+              if (index === 3) {
+                acc.push(
+                  <div key="line-break" className="basis-full h-0 sm:hidden" />
+                );
+              }
+
+              acc.push(
+                <button
+                  key={filter.id}
+                  onClick={() => setProjectFilter(filter.id)}
+                  className={`flex-shrink-0 px-2.5 py-1 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 border cursor-pointer ${
+                    projectFilter === filter.id
+                      ? 'bg-zinc-950 border-zinc-950 text-white shadow-md'
+                      : 'bg-white border-zinc-200 text-zinc-500 hover:text-zinc-800 hover:border-zinc-300'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              );
+              return acc;
+            }, [])}
+          </div>
+
+          {/* GRID TATA LETAK: Menyajikan filteredProjects secara dinamis dalam format 3 kolom */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group bg-white border border-zinc-200/80 rounded-2xl p-6 transition-all duration-500 flex flex-col justify-between shadow-[0_15px_40px_-20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-zinc-300 hover:-translate-y-1"
-              >
+            {filteredProjects.map((proj, idx) => (
+              <div key={proj.id} className="group bg-white border border-zinc-200/80 rounded-2xl p-6 transition-all duration-500 flex flex-col justify-between shadow-[0_15px_40px_-20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-zinc-350 hover:-translate-y-1">
                 <div>
                   <div className="flex items-center gap-1.5 mb-4">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-400/40" />
@@ -608,58 +602,42 @@ export default function App() {
                     <span className="w-2.5 h-2.5 rounded-full bg-green-400/40" />
                   </div>
 
+                  {/* BOX GAMBAR COVER PROYEK */}
                   <div className="w-full h-40 rounded-xl overflow-hidden border border-zinc-200/50 bg-zinc-50 relative mb-6 shadow-inner flex items-center justify-center">
-                    <img
-                      src={project.cover}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    <img 
+                      src={proj.cover} 
+                      alt={proj.title} 
+                      className="w-full h-full object-cover transition-transform duration-555 group-hover:scale-105"
                     />
                   </div>
 
                   <span className="text-[10px] uppercase tracking-wider text-[#ca5b00] font-bold block mb-2">
-                    {project.category}
+                    {proj.category}
                   </span>
-
                   <h3 className="text-lg font-bold text-[#0e121e] mb-2 group-hover:text-[#ca5b00] transition-colors duration-300">
-                    {project.title}
+                    {proj.title}
                   </h3>
-
                   <p className="text-[#4b5563] text-xs sm:text-sm mb-6 leading-relaxed">
-                    {project.description}
+                    {proj.description}
                   </p>
                 </div>
 
                 <div>
                   <div className="flex flex-wrap gap-1.5 mb-5 pt-3 border-t border-zinc-100">
-                    {project.tech.map((technology) => (
-                      <span
-                        key={technology}
-                        className="text-[10px] px-2.5 py-1 bg-zinc-50 text-zinc-600 rounded-md border border-zinc-200/50 font-medium"
-                      >
-                        {technology}
+                    {proj.tech.map((t) => (
+                      <span key={t} className="text-[10px] px-2.5 py-1 bg-zinc-50 text-zinc-600 rounded-md border border-zinc-200/50 font-medium">
+                        {t}
                       </span>
                     ))}
                   </div>
 
                   <button
-                    type="button"
-                    onClick={() => handleProjectClick(project.id)}
+                    onClick={() => handleProjectClick(proj.id)}
                     className="text-xs font-bold text-zinc-800 hover:text-[#ca5b00] inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer"
                   >
                     Lihat Detail Projek
-
-                    <svg
-                      className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
+                    <svg className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                   </button>
                 </div>
@@ -670,207 +648,137 @@ export default function App() {
       </section>
 
       {/* ==========================================
-          SECTION 5: CERTIFICATES
+          SECTION 5: CERTIFICATES (TENTANG SERTIFIKAT)
           ========================================== */}
-      <section
-        id="certificates"
-        className="py-32 border-t border-zinc-200/60 px-6 bg-zinc-100/30"
-      >
+      <section id="certificates" className="py-32 border-t border-zinc-200/60 px-6 bg-zinc-100/30">
         <div className="max-w-5xl mx-auto">
+
           <div className="flex items-center gap-4 mb-16">
-            <span className="text-5xl sm:text-7xl font-extralight text-zinc-300">
-              05.
-            </span>
-
+            <span className="text-5xl sm:text-7xl font-extralight text-black">05.</span>
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">
-                Certificates
-              </span>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">
-                Certificates 
-              </h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-[#ca5b00] font-bold block mb-1">Certificates</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0e121e]">Certificates</h2>
             </div>
           </div>
 
+          {/* Grid 3 Kolom Sejajar */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certificates.map((certificate, index) => (
-              <div
-                key={`${certificate.title}-${index}`}
+            {certificates.map((proj, idx) => (
+              <div 
+                key={idx} 
+                // Kapsul bodi utama diset 'relative', tinggi 'aspect-[4/3]', tumpul, dan menyembunyikan sisa sudut (overflow-hidden)
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200/80 shadow-[0_15px_40px_-20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)] transition-all duration-500 hover:-translate-y-1 flex flex-col justify-end"
               >
-                {/* GAMBAR SERTIFIKAT */}
-                <img
-                  src={certificate.image}
-                  alt={certificate.title}
+                {/* 1. GAMBAR LATAR BELAKANG SEPENUH KOTAK (FULL BOX BACKGROUND IMAGE) */}
+                <img 
+                  src={proj.image} 
+                  alt={proj.title}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* OVERLAY GELAP */}
+                {/* 2. GRADIENT GELAP SEMI-TRANSPARAN (Overlay penyeimbang kontras teks di depan gambar) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/20 transition-opacity duration-300 group-hover:via-black/60 z-10" />
 
-                {/* INFORMASI SERTIFIKAT */}
+                {/* 3. TULISAN INFORMASI MELAYANG DI DEPAN GAMBAR */}
                 <div className="relative z-20 p-5 flex flex-col justify-between h-full w-full text-left">
+                  {/* Bagian Atas: Nama Penerbit */}
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-white/80 block mb-3">
-                      {certificate.issuer}
+                    <span className="text-[10px] uppercase tracking-wider font-bold text-white block mb-3">
+                      
                     </span>
                   </div>
 
+                  {/* Bagian Bawah: Judul Utama, Tanggal Terbit, dan Tombol Akses */}
                   <div className="space-y-1">
-                    <h3 className="text-base sm:text-lg font-bold text-white leading-snug group-hover:text-orange-300 transition-colors duration-300">
-                      {certificate.title}
+                    <h3 className="text-base sm:text-lg font-bold text-white font-space leading-snug group-hover:text-orange-300 transition-colors duration-300">
+                      {proj.title}
                     </h3>
-
-                    <div className="flex items-center justify-between gap-4 pt-3 border-t border-white/15">
-                      <span className="text-white text-xs font-medium">
-                        {certificate.date}
-                      </span>
-
-                      {/* TOMBOL MEMBUKA POP-UP */}
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setActiveCertificate(certificate)
-                        }
-                        className="text-zinc-200 hover:text-white text-xs font-bold inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer"
-                        aria-label={`Lihat sertifikat ${certificate.title}`}
+                    
+                    <div className="flex items-center justify-between pt-3 border-t border-white/15">
+                      <span className="text-white text-xs font-medium">{proj.date}</span>
+                      
+                      {/* Mengubah tag <a> menjadi <button> kustom untuk memicu popup Lightbox */}
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setActiveCertImg({ src: proj.image, title: proj.title });
+                        }}
+                        className="text-zinc-200 hover:text-white text-xs font-bold inline-flex items-center gap-1.5 transition-colors duration-300 cursor-pointer focus:outline-none"
                       >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                          />
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
                         View
                       </button>
                     </div>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ==========================================
-          POP-UP CERTIFICATE
-          ========================================== */}
-      {activeCertificate && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-6"
-          onClick={() => setActiveCertificate(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="certificate-modal-title"
+      {/* =======================================================
+          MODAL LIGHTBOX SCREEN (Pop-up Gambar Layar Penuh)
+          ======================================================= */}
+      {activeCertImg && (
+        <div 
+          onClick={() => setActiveCertImg(null)} // Klik di luar gambar untuk menutup modal
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 cursor-zoom-out"
         >
-          <div
-            className="relative flex max-h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
+          {/* Tombol Silang (X) Penutup */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation(); // Mencegah bentrok dengan onClick penutup area luar
+              setActiveCertImg(null);
+            }}
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 focus:outline-none cursor-pointer"
           >
-            {/* HEADER POP-UP */}
-            <div className="flex items-center justify-between gap-4 border-b border-zinc-200 px-5 py-4 sm:px-6">
-              <div className="min-w-0">
-                <h3
-                  id="certificate-modal-title"
-                  className="text-base sm:text-lg font-bold text-zinc-900"
-                >
-                  {activeCertificate.title}
-                </h3>
-                <p className="mt-1 text-xs sm:text-sm text-zinc-500">  {activeCertificate.issuer} {' • '} {activeCertificate.date}</p>
-              </div>
-              {/* TOMBOL SILANG */}
-              <button
-                type="button"
-                onClick={() => setActiveCertificate(null)}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-all duration-300 hover:border-red-200 hover:bg-red-50 hover:text-red-600 cursor-pointer"
-                aria-label="Tutup sertifikat"
-              ><svg
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"><path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
-            {/* GAMBAR SERTIFIKAT */}
-            <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-zinc-100 p-3 sm:p-6">
-              <img
-                src={activeCertificate.image}
-                alt={activeCertificate.title}
-                className="block max-h-[76vh] max-w-full object-contain shadow-lg"
-              />
-            </div>
+          {/* Frame Gambar Lightbox */}
+          <div 
+            onClick={(e) => e.stopPropagation()} // Mencegah modal tertutup ketika gambar di-klik
+            className="max-w-4xl max-h-[80vh] flex items-center justify-center relative select-none cursor-default"
+          >
+            <img 
+              src={activeCertImg.src} 
+              alt={activeCertImg.title} 
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-white/10"
+            />
           </div>
+
+          {/* Caption di bagian bawah Lightbox */}
+          <p className="mt-6 text-sm md:text-base font-space font-bold text-white text-center max-w-2xl px-4 select-none">
+            {activeCertImg.title}
+          </p>
         </div>
       )}
 
-      {/* ==========================================
-          FOOTER
-          ========================================== */}
-      <footer
-        id="contact"
-        className="border-t border-zinc-200/80 py-16 px-6 text-center text-xs text-zinc-500 bg-white"
-      >
+      {/* FOOTER */}
+      <footer id="contact" className="border-t border-zinc-200/80 py-16 px-6 text-center text-xs text-zinc-500 bg-white">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
           <div className="text-left space-y-1.5">
-            <p className="text-zinc-950 text-base font-bold tracking-tight">
-              Rayhanza Nadhif Athala
-            </p>
-            <p className="text-zinc-500 text-xs">
-              Email: emailanda@example.com
-            </p>
-            <p className="text-zinc-400 text-[10px]">
-              Tersedia untuk proyek Web Development & UI/UX Design.
-            </p>
+            <p className="text-zinc-950 text-base font-bold tracking-tight">Rayhanza Nadhif Athala</p>
+            <p className="text-zinc-500 text-xs">Email: nadhifatthala@gmail.com</p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
-            <a href="#home" className="hover:text-zinc-950 transition-colors">
-              01. Profil
-            </a>
-            <a href="#skills"
-              className="hover:text-[#ca5b00] transition-colors">
-              02. Skill
-            </a>
-            <a href="#experience"
-              className="hover:text-[#ca5b00] transition-colors">
-              03. Experience
-            </a>
-            <a href="#projects"
-              className="hover:text-[#ca5b00] transition-colors">
-              04. Project
-            </a>
-            <a href="#certificates"
-              className="hover:text-[#ca5b00] transition-colors">
-              05. Certificate
-            </a>
+            <a href="#home" className="hover:text-zinc-950 transition-colors">01. Profil</a>
+            <a href="#skills" className="hover:text-[#ca5b00] transition-colors">02. Skill</a>
+            <a href="#experience" className="hover:text-[#ca5b00] transition-colors">03. Experience</a>
+            <a href="#projects" className="hover:text-[#ca5b00] transition-colors">04. Project</a>
+            <a href="#certificates" className="hover:text-[#ca5b00] transition-colors">05. Certificate</a>
           </div>
         </div>
-
-        <p className="mt-12 text-[10px] text-zinc-400">
-          &copy; {new Date().getFullYear()} Portfolio. Seluruh hak cipta
-          dilindungi.
-        </p>
+        <p className="mt-12 text-[10px] text-zinc-400">&copy; {new Date().getFullYear()} Portfolio. Seluruh hak cipta dilindungi.</p>
       </footer>
+
     </div>
   );
 }
